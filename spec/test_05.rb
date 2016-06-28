@@ -33,4 +33,24 @@ describe Unit do
 
   end
 
+  describe "#dead?" do
+
+    before :each do
+      @unit = Unit.new(0, 5)
+    end
+
+    it "can die" do
+      expect(@unit.dead?).to eq(true)
+    end
+
+    it "cannot attack a unit if it is dead" do
+      @footman = Footman.new
+      expect(@unit.attack!(@footman)).to be_nil
+    end
+
+    it "cannot attack a unit if that unit is dead" do
+      @footman = Footman.new
+      expect(@footman.attack!(@unit)).to be_nil
+    end
+  end
 end

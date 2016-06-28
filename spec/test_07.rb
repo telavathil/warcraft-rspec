@@ -24,7 +24,8 @@ describe Footman do
       expect(building.health).to eq(initial_health-((@footman.attack_power/2).ceil))
     end
   end
-
+  @building_attack_mod = .5
+  @unit_attack_mod = 1
   describe "#damage" do
     it "should reduce the unit's health_points by the attack_power specified" do
       @footman.damage(4)
