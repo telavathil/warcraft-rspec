@@ -15,6 +15,14 @@ describe Footman do
       expect(enemy).to receive(:damage).with(10)
       @footman.attack!(enemy)
     end
+
+    it "should do deal 5 (AP) damage to the enemy building" do
+      building = Barracks.new
+      initial_health=building.health
+      #expect(building).to receive(:damage).with(10)
+      @footman.attack!(building)
+      expect(building.health).to eq(initial_health-((@footman.attack_power/2).ceil))
+    end
   end
 
   describe "#damage" do

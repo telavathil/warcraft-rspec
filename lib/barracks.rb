@@ -1,11 +1,16 @@
 require 'pry'
 class Barracks
 
-  attr_accessor :gold, :food
+  attr_accessor :gold, :food, :health
 
   def initialize
     @gold =1000
     @food = 80
+    @health = 500
+  end
+
+  def damage(attack_power)
+    @health -= (attack_power/2).ceil
   end
 
   def can_train_footman?
