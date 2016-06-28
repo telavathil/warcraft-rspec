@@ -1,5 +1,4 @@
 require_relative 'spec_helper'
-
 # A Barracks should only be able to train footmen if it has enough resources
 # Introduce a new method that checks to see if there are enough resources to train one
 # Of course, it should then also be leveraged by the train_footman method
