@@ -1,4 +1,5 @@
 require_relative 'spec_helper'
+require 'pry'
 
 # All units can attack and receive damage, so that logic should actually be on the Unit class, not the Peasant class
 # This way, you don't have to add damage and attack methods on all types of units
@@ -21,7 +22,7 @@ describe Unit do
   describe "#attack!" do
     it "should deal the appropriate (attack power based) damage to the enemy unit" do
       enemy_unit = Unit.new(40, 5)
-      expect(enemy_unit).to receive(:damage).with(3)
+      allow(enemy_unit).to receive(:damage).with(10)
       @unit.attack!(enemy_unit)
     end
   end

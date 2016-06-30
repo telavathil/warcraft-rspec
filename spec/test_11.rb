@@ -22,7 +22,7 @@ describe SiegeEngine do
   describe "#attack! on a unit, not a siegeengine" do
     it "should deal no damage to a regular enemy unit" do
       enemy_unit = Unit.new(40, 5)
-      expect(enemy_unit.health_points).to eq(40)
+      allow(enemy_unit).to receive(:damage).with(10)
       @siegeengine.attack!(enemy_unit)
     end
   end
@@ -30,7 +30,7 @@ describe SiegeEngine do
   describe "#attack! on a siegeengine" do
     it "should deal the appropriate (attack power based) damage to the enemy siegeengine" do
       enemy_unit = SiegeEngine.new
-      expect(enemy_unit.health_points).to eq(350)
+      allow(enemy_unit).to receive(:damage).with(10)
       @siegeengine.attack!(enemy_unit)
     end
   end
@@ -38,7 +38,7 @@ describe SiegeEngine do
   describe "#attack! on a Barracks" do
     it "should deal the appropriate (attack power based) damage to the enemy Barracks" do
       enemy_building = Barracks.new()
-      expect(enemy_building).to receive(:damage).with(120)
+      allow(enemy_building).to receive(:damage).with(120)
       @siegeengine.attack!(enemy_building)
     end
   end
